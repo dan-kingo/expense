@@ -1,3 +1,6 @@
 body {
   padding: 1rem;
 }
+form div input {
+  background: transparent;
+}

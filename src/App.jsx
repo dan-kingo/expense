@@ -6,61 +6,61 @@ import { useState, useEffect } from "react";
 const App = () => {
   const [expenses, setExpenses] = useState([
     {
-      id: 6,
+      id: 1,
       desc: "Movie Ticket",
       amount: 15,
       category: "Entertainment",
     },
     {
-      id: 7,
+      id: 2,
       desc: "Electricity Bill",
       amount: 30,
       category: "Utilities",
     },
     {
-      id: 8,
+      id: 3,
       desc: "Grocery Shopping",
       amount: 50,
       category: "Groceries",
     },
     {
-      id: 9,
+      id: 4,
       desc: "Internet Bill",
       amount: 40,
       category: "Utilities",
     },
     {
-      id: 10,
+      id: 5,
       desc: "Concert Tickets",
       amount: 60,
       category: "Entertainment",
     },
     {
-      id: 11,
+      id: 6,
       desc: "Gas Bill",
       amount: 25,
       category: "Utilities",
     },
     {
-      id: 12,
+      id: 7,
       desc: "Vegetable Shopping",
       amount: 30,
       category: "Groceries",
     },
     {
-      id: 13,
+      id: 8,
       desc: "Restaurant Dinner",
       amount: 35,
       category: "Entertainment",
     },
     {
-      id: 14,
+      id: 9,
       desc: "Phone Bill",
       amount: 45,
       category: "Utilities",
     },
     {
-      id: 15,
+      id: 10,
       desc: "Clothing Shopping",
       amount: 75,
       category: "Entertainment",
@@ -83,7 +83,13 @@ const App = () => {
 
   return (
     <div>
-      {/* <Expense /> */}
+      <div className="mb-3">
+        <Expense
+          onSubmit={(expense) => {
+            setExpenses([...expenses, { ...expense, id: expenses.length + 1 }]);
+          }}
+        />
+      </div>
       <div className="mb-3">
         <ExpenseFilter onSelect={(category) => setSelectCategory(category)} />
       </div>

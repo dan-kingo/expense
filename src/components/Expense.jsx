@@ -15,15 +15,21 @@ const schema = z.object({
     .refine((val) => val !== "", { message: "Category is required!" }),
 });
 
-const Expense = () => {
+const Expense = ({ onSubmit }) => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
+    reset,
   } = useForm({ resolver: zodResolver(schema) });
 
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form
+      onSubmit={handleSubmit((data) => {
+        onSubmit(data);
+        reset();
+      })}
+    >
       <div className="mb-3">
         <label htmlFor="desc" className="form-label fw-bolder">
           Description
@@ -66,7 +72,12 @@ const Expense = () => {
           <p className="text-danger">{errors.category.message}</p>
         )}
       </div>
-      <input type="submit" value="Submit" className="btn btn-primary" />
+      <input
+        disabled={!isValid}
+        type="submit"
+        value="Submit"
+        className="btn btn-primary"
+      />
     </form>
   );
 };
