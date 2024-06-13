@@ -72,12 +72,7 @@ const Expense = ({ onSubmit }) => {
           <p className="text-danger">{errors.category.message}</p>
         )}
       </div>
-      <input
-        disabled={!isValid}
-        type="submit"
-        value="Submit"
-        className="btn btn-primary"
-      />
+      <input type="submit" value="Submit" className="btn btn-primary" />
     </form>
   );
 };
